@@ -1,0 +1,29 @@
+{
+  "Regions": [
+    {
+      "Lines": [
+        {
+          "Words": [
+            {
+              "FieldName": "firstName"
+            }
+          ]
+        },
+        {
+          "Words": [
+            {
+              "FieldName": "lastName"
+            }
+          ]
+        },
+        {
+          "Words": [
+            {
+              "FieldName": "company"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

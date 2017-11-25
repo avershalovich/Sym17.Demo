@@ -1,0 +1,54 @@
+﻿@using Sym17.Web.Models.PowerBI
+@using Sym17.Web.Services
+@model Sym17.Web.Models.ViewModels.ContactViewModel
+
+@{
+    ViewBag.Title = "Test";
+}
+
+<h2>Test XConnect</h2>
+
+<div>
+    <h4>Test Contact</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Name
+        </dt>
+
+        <dd>
+            @Model.FirstName @Model.LastName
+        </dd>
+        <dt>
+            Recognized data
+        </dt>
+        <dd>
+            @Model.Gender, @Model.Age, @Model.Company
+        </dd>
+    </dl>
+    
+    <hr/>
+    <h4>Test list of contacts</h4>
+    @{
+        Xservice xservice = new Xservice();
+        var contacts = xservice.GetContacts("test");
+
+        //List<PBIOfflineInteraction> interactions = xservice.GetAllInteractions().ToList();
+
+    }
+    <ul>
+        @foreach (var c in contacts)
+        {
+            <li>@c.Id</li>
+        }
+    </ul>
+@*    <h4>Test list of interactions</h4>*@
+@*    <ul>*@
+@*        @foreach (var i in interactions)*@
+@*        {*@
+@*            <li>time: @i.StartTime value: @i.EngagmentValue isFace: @i.HasFaceInfo</li>*@
+@*        }*@
+@*    </ul>*@
+</div>
+
+@Html.Partial("_Form")

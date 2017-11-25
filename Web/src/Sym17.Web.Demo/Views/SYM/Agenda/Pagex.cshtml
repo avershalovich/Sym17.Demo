@@ -1,0 +1,142 @@
+﻿@using Sitecore.Mvc
+@{
+    Layout = null;
+}
+
+<!-- Header -->
+<header id="top" class="header header--small">
+    <div id="particles-js"></div> <!--id="particles-js"-->
+</header>
+
+
+<section class="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 wow fadeIn">
+
+                @Html.Partial("~/Views/SYM/Agenda/Header.cshtml")
+
+                <div class="col-xs-12">
+
+                    <div class="carousel carousel--agenda slide">
+
+                        <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        
+                     <div class="item active">
+                         <div class="carousel-head">
+                             <div class="agenda-date">
+                                 Tuesday<br />
+                                 <span>17</span>
+                             </div>
+
+                             <div class="agenda-tooltip">
+                                 <p class="hidden-sm hidden-xs">Use hand cursor drag to see whole agenda</p>
+                                 <p class="visible-sm visible-xs">Swipe to see<br /> whole agenda</p>
+                                 <img class="hidden-xs" src="img/drag.png" alt="drag" />
+                             </div>
+
+                         </div>
+
+                         <div class="carousel-caption">
+                             <div class="agenda-wrapper dragscroll">
+                                 <div class="agenda" data-agenda-items="">
+                                    @Html.Sitecore().Placeholder("day-1")
+                                     <table class="agenda-table agenda-table--blue">
+                                         <tbody>
+                                         <tr>
+                                             <td colspan="2"><span><strong>Happy Hour</strong></span></td>
+                                         </tr>
+                                         <tr>
+                                             <td class="agenda-table__time"><span>06:00pm<br>07:30 </span></td>
+                                             <td>Partner Pavilion</td>
+                                         </tr>
+                                         </tbody>
+                                     </table>
+                                </div>
+                            </div>
+                        </div>
+                     
+                     </div>
+
+                            <div class="item">
+                                <div class="carousel-head">
+                                    <div class="agenda-date">
+                                        Wednesday<br />
+                                        <span>18</span>
+                                    </div>
+
+                                    <div class="agenda-tooltip">
+                                        <p class="hidden-sm hidden-xs">Use hand cursor drag to see whole agenda</p>
+                                        <p class="visible-sm visible-xs">Swipe to see<br /> whole agenda</p>
+                                        <img class="hidden-xs" src="img/drag.png" alt="drag" />
+                                    </div>
+                                </div>
+                                <div class="carousel-caption">
+                                    <div class="agenda-wrapper dragscroll">
+                                        <div class="agenda" data-agenda-items="">
+                                            @Html.Sitecore().Placeholder("day-2")
+                                            <table class="agenda-table agenda-table--blue">
+                                                <tbody>
+                                                <tr>
+                                                    <td colspan="2"><span><strong>Sitecore Symposium Party</strong></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="agenda-table__time"><span>08:00pm<br>12:00am </span></td>
+                                                    <td>(Venue: TBA)</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                              
+                           
+                            </div>
+
+                            <div class="item">
+                                <div class="carousel-head">
+                                    <div class="agenda-date">
+                                        Thursday<br />
+                                        <span>19</span>
+                                    </div>
+
+                                    <div class="agenda-tooltip">
+                                        <p class="hidden-sm hidden-xs">Use hand cursor drag to see whole agenda</p>
+                                        <p class="visible-sm visible-xs">Swipe to see<br /> whole agenda</p>
+                                        <img class="hidden-xs" src="img/drag.png" alt="drag" />
+                                    </div>
+
+                                </div>
+                                <div class="carousel-caption">
+                                    <div class="agenda-wrapper dragscroll">
+                                        <div class="agenda" data-agenda-items="">
+                                            @Html.Sitecore().Placeholder("day-3")
+                                            @*<table class="agenda-table agenda-table--blue">
+                                                <tbody>
+                                                <tr>
+                                                    <td colspan="2"><span><strong>Sitecore Symposium Party</strong></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="agenda-table__time"><span>08:00pm<br>12:00am </span></td>
+                                                    <td>(Venue: TBA)</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#" data-slide="prev">‹</a>
+                        <a class="right carousel-control" href="#" data-slide="next">›</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

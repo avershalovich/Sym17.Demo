@@ -1,0 +1,180 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Mvc.Analytics.Extensions
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-25257373-1"></script>
+    <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-25257373-1');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!--
+    Copyright 2014-2015 ForBetterWeb
+    To use this theme you must have a license purchased at WrapBootstrap (http://forbetterweb.com)
+    -->
+
+    <title>Brimit Demo</title>
+
+    <!-- Custom CSS -->
+    <link href="/css/main.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+            integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+            crossorigin="anonymous"></script>
+
+    <!-- IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+    <div class="top_menu">
+        <div class="wrapper clearfix">
+            <div id="logo">
+                <a href="#top" class="logo" data-dark-logo="homepages/event/images/logo-dark.png">
+                    <img src="/img/brimit-logo.png" alt="Polo Logo">
+                </a>
+            </div>
+            <div class="navigation-wrap">
+                <div>
+                    <nav id="mainMenu" class="main-menu mega-menu">
+                        <ul class="main-menu nav nav-pills">
+                            <li>
+                                <a href="/sym/">
+                                    Sitecore Symposium 2017
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/sym/agenda.html">
+                                    Agenda
+                                </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="/sym/#contact">
+                                    Contact
+                                </a>
+                            </li>
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Navigation -->
+    <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-1x fa-bars"></i></a>
+    <nav id="sidebar-wrapper">
+        <!--  Optional: close button
+        <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-2x fa-times"></i></a> -->
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#top" class="logo" data-dark-logo="homepages/event/images/logo-dark.png">
+                    <img src="/img/brimit-logo.png" alt="Polo Logo">
+                </a>
+                <a href="#" id="menu-close" class="mobile_menu_close">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </a>
+            </li>
+
+            <li>
+                <a href="/sym/">
+                    Sitecore Symposium 2017
+                </a>
+            </li>
+            <li>
+                <a href="/sym/agenda.html">
+                    Agenda
+                </a>
+            </li>
+            <li class="dropdown">
+                <a href="/sym/#contact">
+                    Contact
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!-- Header -->
+    
+    @Html.Sitecore().Placeholder("content")
+
+    <!-- contact -->
+    <section id="contact">
+        <div class="container wow fadeIn">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="heading">How can we help you?</h2>
+                    <p class="lead text-muted">Should you have a question or request for proposal, please get in touch! </p>
+                    <h2><i class="fa fa-phone fa-fw"></i>(+375)29 329 4571</h2>
+                    <h4 class="lead text-muted">
+                        <i class="fa fa-fw fa-envelope"></i>engage@brimit.com<br>
+                        <i class="fa fa-fw fa-map-marker"></i> Minsk, Belarus<br>
+                        <i class="fa fa-fw fa-map-marker"></i> Amsterdam, Netherlands
+                    </h4>
+                </div>
+                <div class="col-md-5 col-md-offset-1">
+                    <h2 class="heading">See you in Las Vegas!</h2>
+                    <p class="lead text-muted">Welcome to our booth #411, Partner Pavilion, Mirage Events Center! </p>
+
+                    <a href="mailto:engage@brimt.com" class="btn btn-white"><i class="fa fa-phone"></i> Schedule a meeting</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- contacts -->
+    <div id="contact2">
+        <div class="container-fluid overlay text-center">
+            <div class="col-md-6 col-md-offset-3 wow fadeIn">
+                <h2 class="wow flash animated" data-wow-iteration="999" data-wow-duration="2s" style="visibility: visible; animation-duration: 2s; animation-iteration-count: 999; animation-name: flash;"><a href="#top"><i class="fa fa-angle-up"></i></a>&nbsp;</h2>
+                <img src="/img/brimit-logo.png" width="320" alt="">
+                <ul class="list-inline">
+                    <li>
+                        <a href="https://twitter.com/brimit_web"><i class="fa fa-twitter fa-2x fa-fw"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/company/brimit"><i class="fa fa-linkedin fa-2x  fa-fw"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/pages/Brimit/162985213800106"><i class="fa fa-facebook fa-2x  fa-fw"></i></a>
+                    </li>
+                </ul>
+                <p>&copy;2017 Brimit</p>
+
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA"></script>
+    <script src="/js/build.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.1.4.min.js"></script>
+    <script src="/js/signalr.hubs.js"></script>
+
+</body>
+</html>

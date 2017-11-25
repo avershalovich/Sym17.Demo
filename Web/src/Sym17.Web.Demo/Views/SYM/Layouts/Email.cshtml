@@ -1,0 +1,291 @@
+﻿@using Sitecore.Data;
+@using Sitecore.Data.Items;
+@using Sym17.Web.Demo.Models;
+@using Sym17.Web.Demo.Segmentation;
+@using Sitecore.XConnect.Client;
+@using Sitecore.XConnect;
+@using Sitecore.Mvc
+@using Sym17.Web
+@using Sym17.Web.Demo.Processors.Session
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Email</title>
+</head>
+<body>
+@{ 
+    XConnectClient client = XConnectClientReference.GetClient();
+
+    Contact existingContact = client.Get<Contact>(new ContactReference(Sitecore.Analytics.Tracker.Current.Session.Contact.ContactId), new ExpandOptions());
+
+    if (existingContact != null && existingContact.Identifiers.Any())
+    {
+        var faceIdentifier = existingContact.Identifiers.FirstOrDefault(ident => ident.Source == Settings.FaceApiIdentificationSource);
+
+        if (faceIdentifier != null)
+        {
+            Sitecore.Analytics.Tracker.Current.Session.IdentifyAs(faceIdentifier.Source, faceIdentifier.Identifier);
+        }
+    }
+}
+
+@{
+    var identifiers = Sitecore.Analytics.Tracker.Current.Contact.Identifiers;
+
+    <p>Identifier:Type:Source</p>
+    <ul>
+    @foreach (var identifier in identifiers)
+    {
+        <li>@identifier.Identifier : @identifier.Type.ToString() : @identifier.Source</li>
+    }
+    </ul>
+}
+    
+@{
+    foreach (var profile in Sitecore.Analytics.Tracker.Current.Session.Contact.BehaviorProfiles.Profiles)
+    {
+        <p>Profile id:</p>
+        @profile.Id
+
+        <br>
+        foreach (var score in profile.Scores)
+        {
+            <p>Score Key: @score.Key</p>
+            <p>Score Value: @score.Value</p>
+        }
+    }
+}
+
+    <!--*|IF:MC_PREVIEW_TEXT|*-->
+    <!--[if !gte mso 9]><!----><span class="mcnPreviewText" style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">*|MC_PREVIEW_TEXT|*</span><!--<![endif]-->
+    <!--*|END:IF|*-->   
+    
+
+<table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" style="border-collapse:collapse;height:100%;margin:0;padding:0;width:100%;background-color:#fafafa">
+        <tbody>
+            <tr>
+                <td align="center" valign="top" style="height:100%;margin:0;padding:10px;width:100%;border-top:0">
+                    <!-- BEGIN TEMPLATE // -->
+                    <!--[if gte mso 9]>
+                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="600" style="width:600px;">
+                    <tr>
+                    <td align="center" valign="top" width="600" style="width:600px;">
+                    <![endif]-->
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse:collapse;border:0;max-width:600px!important">
+                        <tbody>
+                            <tr>
+                                <td valign="top" id="templatePreheader" style="background:#fafafa none no-repeat center/cover;background-color:#fafafa;background-image:none;background-repeat:no-repeat;background-position:center;background-size:cover;border-top:0;border-bottom:0;padding-top:9px;padding-bottom:9px">
+                                    <table class="m_8242912278495145903mcnTextBlock" style="min-width:100%;border-collapse:collapse" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        <tbody class="m_8242912278495145903mcnTextBlockOuter">
+                                        <tr>
+                                            <td class="m_8242912278495145903mcnTextBlockInner" style="padding-top:9px" valign="top">
+                                                <table style="max-width:100%;min-width:100%;border-collapse:collapse" class="m_8242912278495145903mcnTextContentContainer" width="100%" cellspacing="0" cellpadding="0" border="0" align="left">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td class="m_8242912278495145903mcnTextContent" style="padding: 0px 18px 9px; text-align: center; word-break: break-word; color: #656565; font-family: Helvetica; font-size: 12px; line-height: 150%" valign="top">
+                                                            <a href="https://sym-demo.brimit.com/agenda-email?@(SwitchContact.ContactKey + "=" + Sitecore.Analytics.Tracker.Current.Session.Contact.ContactId.ToString("D"))" style="color: #656565; font-weight: normal; text-decoration: underline" target="_blank">View this email in your browser</a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>				
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            @Html.Sitecore().Placeholder("content")
+                            <tr>
+                                <td valign="top" id="m_8242912278495145903templateFooter" style="background:#ffffff none no-repeat center/cover;background-color:#ffffff;background-image:none;background-repeat:no-repeat;background-position:center;background-size:cover;border-top:0;border-bottom:0;padding-top:9px;padding-bottom:9px">
+                                    <table class="m_8242912278495145903mcnTextBlock" style="min-width:100%;border-collapse:collapse" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        <tbody class="m_8242912278495145903mcnTextBlockOuter">
+                                            <tr>
+                                                <td class="m_8242912278495145903mcnTextBlockInner" style="padding-top:9px" valign="top">
+                                                    <table style="max-width:100%;min-width:100%;border-collapse:collapse" class="m_8242912278495145903mcnTextContentContainer" width="100%" cellspacing="0" cellpadding="0" border="0" align="left">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="m_8242912278495145903mcnTextContent" style="padding-top:0;padding-right:18px;padding-bottom:9px;padding-left:18px;word-break:break-word;color:#656565;font-family:Helvetica;font-size:12px;line-height:150%;text-align:center" valign="top">
+                                                                    <div style="text-align:left"><span style="font-size:18px">This experience is delivered by Brimit</span></div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table><table class="m_8242912278495145903mcnShareBlock" style="min-width:100%;border-collapse:collapse" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        <tbody class="m_8242912278495145903mcnShareBlockOuter">
+                                            <tr>
+                                                <td style="padding:9px" class="m_8242912278495145903mcnShareBlockInner" valign="top">
+                                                    <table class="m_8242912278495145903mcnShareContentContainer" style="min-width:100%;border-collapse:collapse" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="padding-top:0;padding-left:9px;padding-bottom:0;padding-right:9px" align="left">
+                                                                    <table style="min-width:100%;border-collapse:collapse" class="m_8242912278495145903mcnShareContent" width="100%" cellspacing="0" cellpadding="0" border="0" align="left">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td class="m_8242912278495145903mcnShareContentItemContainer" style="padding-top:9px;padding-right:9px;padding-left:9px" valign="top" align="left">
+                                                                                    <table cellspacing="0" cellpadding="0" border="0" align="left" style="border-collapse:collapse">
+                                                                                        <tbody>
+                                                                                            <tr>
+                                                                                                <td valign="top" align="left">
+
+
+
+                                                                                                    <table cellspacing="0" cellpadding="0" border="0" align="left" style="border-collapse:collapse">
+                                                                                                        <tbody>
+                                                                                                            <tr>
+                                                                                                                <td style="padding-right:9px;padding-bottom:9px" class="m_8242912278495145903mcnShareContentItemContainer" valign="top">
+                                                                                                                    <table class="m_8242912278495145903mcnShareContentItem" style="border-collapse:separate;border-radius:3px" width="" cellspacing="0" cellpadding="0" border="0">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td style="padding-top:5px;padding-right:9px;padding-bottom:5px;padding-left:9px" valign="middle" align="left">
+                                                                                                                                    <table width="" cellspacing="0" cellpadding="0" border="0" align="left" style="border-collapse:collapse">
+                                                                                                                                        <tbody>
+                                                                                                                                            <tr>
+                                                                                                                                                <td class="m_8242912278495145903mcnShareIconContent" width="24" valign="middle" align="center">
+                                                                                                                                                    <a href="http://www.facebook.com/sharer/sharer.php?u=" target="_blank" data-saferedirecturl="https://www.google.com/url?hl=ru&amp;q=http://www.facebook.com/sharer/sharer.php?u%3D&amp;source=gmail&amp;ust=1507722006748000&amp;usg=AFQjCNFYuv_z8RK9bt0bOS8lDdA3TaY3Wg"><img src="https://ci5.googleusercontent.com/proxy/pS-xPwkFqnflV7rc4dnAlcsKqer1SA-EyY1YKnmCus118BOixN6hD5sRUCqoKMZBD78ATe0j-zF2SEBCop4dd3IM3pxnSPoc9-fO4R1zWRUa_ZokVGh8ZWqkBAU41prZ_UAex2DRoVPt3A=s0-d-e1-ft#https://cdn-images.mailchimp.com/icons/social-block-v2/outline-color-facebook-48.png" style="display:block;border:0;height:auto;outline:none;text-decoration:none" width="24" height="24" class="CToWUd"></a>
+                                                                                                                                                </td>
+                                                                                                                                                <td class="m_8242912278495145903mcnShareTextContent" style="padding-left:5px" valign="middle" align="left">
+                                                                                                                                                    <a href="http://www.facebook.com/sharer/sharer.php?u=" style="color:#202020;font-family:Arial;font-size:12px;font-weight:normal;line-height:normal;text-align:center;text-decoration:none" target="_blank" data-saferedirecturl="https://www.google.com/url?hl=ru&amp;q=http://www.facebook.com/sharer/sharer.php?u%3D&amp;source=gmail&amp;ust=1507722006748000&amp;usg=AFQjCNFYuv_z8RK9bt0bOS8lDdA3TaY3Wg">Share</a>
+                                                                                                                                                </td>
+                                                                                                                                            </tr>
+                                                                                                                                        </tbody>
+                                                                                                                                    </table>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                        </tbody>
+                                                                                                    </table>
+
+
+
+                                                                                                    <table cellspacing="0" cellpadding="0" border="0" align="left" style="border-collapse:collapse">
+                                                                                                        <tbody>
+                                                                                                            <tr>
+                                                                                                                <td style="padding-right:9px;padding-bottom:9px" class="m_8242912278495145903mcnShareContentItemContainer" valign="top">
+                                                                                                                    <table class="m_8242912278495145903mcnShareContentItem" style="border-collapse:separate;border-radius:3px" width="" cellspacing="0" cellpadding="0" border="0">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td style="padding-top:5px;padding-right:9px;padding-bottom:5px;padding-left:9px" valign="middle" align="left">
+                                                                                                                                    <table width="" cellspacing="0" cellpadding="0" border="0" align="left" style="border-collapse:collapse">
+                                                                                                                                        <tbody>
+                                                                                                                                            <tr>
+                                                                                                                                                <td class="m_8242912278495145903mcnShareIconContent" width="24" valign="middle" align="center">
+                                                                                                                                                    <a href="http://www.linkedin.com/shareArticle?url=&amp;mini=true&amp;title=" target="_blank" data-saferedirecturl="https://www.google.com/url?hl=ru&amp;q=http://www.linkedin.com/shareArticle?url%3D%26mini%3Dtrue%26title%3D&amp;source=gmail&amp;ust=1507722006748000&amp;usg=AFQjCNEFrArAfgjaZeOXs27pRAgcgT4aXA"><img src="https://ci4.googleusercontent.com/proxy/qt0bcUPJDoDitbKgOAFA2l5NBXDJO8aoXqmyus5yzCtGQemA8CzvEKTjqa5ZHnMgSbvHPR10n76ryrXmMuOjgQ6y9-Jh_EB9_-R-ODN__Rh_Qa3uP2mOYqhQoMGh2l2pEk780fgL-92VvA=s0-d-e1-ft#https://cdn-images.mailchimp.com/icons/social-block-v2/outline-color-linkedin-48.png" style="display:block;border:0;height:auto;outline:none;text-decoration:none" width="24" height="24" class="CToWUd"></a>
+                                                                                                                                                </td>
+                                                                                                                                                <td class="m_8242912278495145903mcnShareTextContent" style="padding-left:5px" valign="middle" align="left">
+                                                                                                                                                    <a href="http://www.linkedin.com/shareArticle?url=&amp;mini=true&amp;title=" style="color:#202020;font-family:Arial;font-size:12px;font-weight:normal;line-height:normal;text-align:center;text-decoration:none" target="_blank" data-saferedirecturl="https://www.google.com/url?hl=ru&amp;q=http://www.linkedin.com/shareArticle?url%3D%26mini%3Dtrue%26title%3D&amp;source=gmail&amp;ust=1507722006748000&amp;usg=AFQjCNEFrArAfgjaZeOXs27pRAgcgT4aXA">Share</a>
+                                                                                                                                                </td>
+                                                                                                                                            </tr>
+                                                                                                                                        </tbody>
+                                                                                                                                    </table>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                        </tbody>
+                                                                                                    </table>
+
+
+
+                                                                                                    <table cellspacing="0" cellpadding="0" border="0" align="left" style="border-collapse:collapse">
+                                                                                                        <tbody>
+                                                                                                            <tr>
+                                                                                                                <td style="padding-right:0;padding-bottom:9px" class="m_8242912278495145903mcnShareContentItemContainer" valign="top">
+                                                                                                                    <table class="m_8242912278495145903mcnShareContentItem" style="border-collapse:separate;border-radius:3px" width="" cellspacing="0" cellpadding="0" border="0">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td style="padding-top:5px;padding-right:9px;padding-bottom:5px;padding-left:9px" valign="middle" align="left">
+                                                                                                                                    <table width="" cellspacing="0" cellpadding="0" border="0" align="left" style="border-collapse:collapse">
+                                                                                                                                        <tbody>
+                                                                                                                                            <tr>
+                                                                                                                                                <td class="m_8242912278495145903mcnShareIconContent" width="24" valign="middle" align="center">
+                                                                                                                                                    <a href="http://twitter.com/intent/tweet?text=:" target="_blank" data-saferedirecturl="https://www.google.com/url?hl=ru&amp;q=http://twitter.com/intent/tweet?text%3D:&amp;source=gmail&amp;ust=1507722006748000&amp;usg=AFQjCNGRP8MauWKsfeBJfjoIJqVeS83rPg"><img src="https://ci6.googleusercontent.com/proxy/V7GBDRvj32iEDDXEqsyNPdbkRFmMb24JvyDJGVY2dxt4tLSq4a_M19kSx5PVP-XC5mlJObm6TocQzLwGWkjRZrO2CkPExd8qWzURwlnv645uP1Gw8t_SVLhjQLQLLW3Wam9gaNz9VuYZ=s0-d-e1-ft#https://cdn-images.mailchimp.com/icons/social-block-v2/outline-color-twitter-48.png" style="display:block;border:0;height:auto;outline:none;text-decoration:none" width="24" height="24" class="CToWUd"></a>
+                                                                                                                                                </td>
+                                                                                                                                                <td class="m_8242912278495145903mcnShareTextContent" style="padding-left:5px" valign="middle" align="left">
+                                                                                                                                                    <a href="http://twitter.com/intent/tweet?text=:" style="color:#202020;font-family:Arial;font-size:12px;font-weight:normal;line-height:normal;text-align:center;text-decoration:none" target="_blank" data-saferedirecturl="https://www.google.com/url?hl=ru&amp;q=http://twitter.com/intent/tweet?text%3D:&amp;source=gmail&amp;ust=1507722006748000&amp;usg=AFQjCNGRP8MauWKsfeBJfjoIJqVeS83rPg">Tweet</a>
+                                                                                                                                                </td>
+                                                                                                                                            </tr>
+                                                                                                                                        </tbody>
+                                                                                                                                    </table>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table><table class="m_8242912278495145903mcnTextBlock" style="min-width:100%;border-collapse:collapse" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        <tbody class="m_8242912278495145903mcnTextBlockOuter">
+                                            <tr>
+                                                <td class="m_8242912278495145903mcnTextBlockInner" style="padding-top:9px" valign="top">
+
+                                                    <table style="max-width:100%;min-width:100%;border-collapse:collapse" class="m_8242912278495145903mcnTextContentContainer" width="100%" cellspacing="0" cellpadding="0" border="0" align="left">
+                                                        <tbody>
+                                                            <tr>
+
+                                                                <td class="m_8242912278495145903mcnTextContent" style="padding-top:0;padding-right:18px;padding-bottom:9px;padding-left:18px;word-break:break-word;color:#656565;font-family:Helvetica;font-size:12px;line-height:150%;text-align:center" valign="top">
+
+                                                                    <table style="margin:0;padding:0;width:100%;border-collapse:collapse" cellspacing="0" cellpadding="0" border="0">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td style="background:#7d7d7d;padding:16px"><a href="http://brimit.com" style="color:#656565;font-weight:normal;text-decoration:underline" target="_blank" data-saferedirecturl="https://www.google.com/url?hl=ru&amp;q=http://brimit.com&amp;source=gmail&amp;ust=1507722006748000&amp;usg=AFQjCNH06bo9B4O8spMJfN-e3yJMexmbAA"><img src="https://ci6.googleusercontent.com/proxy/kswyVFs1Bg-Z7hca2GkIJZa79JM5zl08wM4rtkmSetiqi92gj9MIZbvZXAAaBt_DjkDfiKCWlBXM7FfwxNrRXUn1n15utmxg4C9GRoGpTSHAhDLYRejBzP2y2La_PiaT0HnJfstODTyRkr1y_A9FLZwksheE7_VTWDeWDU8=s0-d-e1-ft#https://gallery.mailchimp.com/b35d80c8c536cc62fcca5c7d3/images/8224e8b4-3669-4915-8ba1-dbe6d6d639f4.png" style="border:0px none;margin:0px;float:left;height:auto!important;outline:none;text-decoration:none" width="180" height="69" class="CToWUd"></a></td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--[if gte mso 9]>
+                    </td>
+                    </tr>
+                    </table>
+                    <![endif]-->
+                    <!-- // END TEMPLATE -->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
+

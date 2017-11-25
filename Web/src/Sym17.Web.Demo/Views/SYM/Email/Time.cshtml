@@ -1,0 +1,75 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<Sym17.Web.Demo.Models.ITimeSlot>
+@{
+    Layout = null;
+}
+
+@if (Model != null)
+{
+    if (Model.Agendas == null || !Model.Agendas.Any())
+    {
+        <table class="timing" cellspacing="0" cellpadding="0" border="0" style="border-collapse:collapse;margin:0;padding:0;width:100%">
+            <tbody>
+            <tr>
+                <td width="50">
+                    <span class="timing-point" style="width: 21px; text-align: center; display: block">
+                        <span style="width:4px;height:12px;background:#e4e4e4;display:block;margin:0 auto;font-size:0">|</span> 
+                        <img style="border:0px;height:auto!important;outline:none;text-decoration:none;width:21px;margin:0px;display:block" data-file-id="246697" src="https://gallery.mailchimp.com/b35d80c8c536cc62fcca5c7d3/images/fd7b07ca-34ef-4831-ba99-6b94f461a6d1.png" width="21" height="21">
+                        <span style="width:4px;height:12px;background:#e4e4e4;display:block;margin:0 auto;font-size:0">|</span>
+                    </span>
+                </td>
+                <td>@Editable(x => x.DisplayName)</td>
+            </tr>
+            </tbody>
+        </table>
+                }
+                else
+                {
+                    foreach (var agenda in Model.Agendas)
+                    {
+                        var color = "#e4e4e4";
+                        switch (@agenda.Colour)
+                        {
+                            case "blue": color = "#85c7f2"; break;
+                            case "gray": color = "#e4e4e4"; break;
+                            case "orange": color = "#fc814a"; break;
+                            case "purple": color = "#9900cc"; break;
+                            default: color = "#e4e4e4"; break;
+                        }
+
+
+            <table class="timing" style="border-collapse:collapse;margin:0;padding:0;width:100%">
+                <tbody>
+                <tr>
+                    <td>
+                        <table class="timing-table timing-table--@agenda.Colour" style="border-collapse:collapse;margin:0;padding:0;width:100%;border:4px solid @color">
+                            <tbody>
+                            <tr>
+                                <td class="timing-table-head" colspan="2" style="padding:12px"><span><strong>@agenda.Title</strong></span></td>
+                            </tr>
+                            <tr>
+                                <td class="timing-table-time" width="80" style="padding:12px">
+                                    <span style="font-size:20px;font-weight:bold;padding:8px;display:inline-block;color:#85c7f2;border-right:2px solid #85c7f2">
+                                        @Html.Raw(agenda.FormattedTime.Replace("am","").Replace("pm",""))
+                                    </span>
+                                </td>
+                                <td class="timing-table-speaker" style="padding:12px">@agenda.Speaker<br/><i>@agenda.Location</i></td>
+                              
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <table class="timing" style="border-collapse:collapse;margin:0;padding:0;width:100%">
+                <tbody>
+                <tr>
+                    <td width="50">
+                        <span class="m_8242912278495145903timing-point" style="width:21px;text-align:center;display:block"><span style="width:4px;height:12px;background:#e4e4e4;display:block;margin:0 auto;font-size:0">|</span> </span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        }
+}
+}

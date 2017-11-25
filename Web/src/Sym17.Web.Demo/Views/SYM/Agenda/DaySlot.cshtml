@@ -1,0 +1,20 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<Sym17.Web.Demo.Models.IDaySlot>
+@{
+    Layout = null;
+}
+@if (Model != null)
+{
+        <div class="carousel-head">
+            <div class="agenda-date">
+                @Model.DayOfWeek<br />
+                <span>@Model.DayNumber</span>
+            </div>
+
+            <div class="agenda-tooltip">
+                <p class="hidden-sm hidden-xs">Use hand cursor drag to see whole agenda</p>
+                <p class="visible-sm visible-xs">Swipe to see<br /> whole agenda</p>
+                <img class="hidden-xs" src="img/drag.png" alt="drag" />
+            </div>
+        </div>
+
+}

@@ -1,0 +1,60 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<Sym17.Web.Demo.Models.ITimeSlot>
+@{
+    Layout = null;
+}
+
+@if (Model != null)
+{
+    
+            if (Model.Agendas == null || !Model.Agendas.Any())
+            {
+                <div class="agenda-point">
+                    <div class="agenda-point__image">
+                        <span></span>
+                        <img src="img/dot-gray.png" alt="" />
+                        <span></span>
+                    </div>
+                    <div class="agenda-point__info">
+                        <p>@Editable(x => x.DisplayName)</p>
+                    </div>
+                </div>
+            }
+            else
+            {
+                var index = 0;
+                <div class="agenda-time">
+                    <p>@Editable(x => x.DisplayName)</p>
+                    @foreach (var agenda in Model.Agendas)
+                    {
+                        index++;
+                        <table class="agenda-table agenda-table--@agenda.Colour @agenda.Category" data-tags="@agenda.Tags" data-date="@agenda.Date" data-category="@agenda.Category">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <span><strong>@agenda.Title</strong></span>
+                                    <span style="display: none;" class="teaser">@agenda.Teaser</span>
+                                    <span style="display: none;" class="description">@agenda.Description</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@agenda.Speaker<br><i>@agenda.Location</i></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        if (index % 3 == 0)
+                        {
+                            <div class="clearfix clearfix--padded"></div>
+                        }
+                    }
+            
+                </div>
+                <div class="clearfix"></div>
+                <div class="agenda-point">
+                    <div class="agenda-point__image">
+                        <span></span>
+                    </div>
+                </div>
+            }
+
+}
+

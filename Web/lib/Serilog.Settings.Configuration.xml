@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Serilog.Settings.Configuration</name>
+    </assembly>
+    <members>
+        <member name="T:Serilog.ConfigurationLoggerConfigurationExtensions">
+            <summary>
+            Extends <see cref="T:Serilog.LoggerConfiguration"/> with support for System.Configuration appSettings elements.
+            </summary>
+        </member>
+        <member name="M:Serilog.ConfigurationLoggerConfigurationExtensions.Configuration(Serilog.Configuration.LoggerSettingsConfiguration,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.DependencyModel.DependencyContext)">
+            <summary>
+            Reads logger settings from the provided configuration object using the default section name.
+            </summary>
+            <param name="settingConfiguration">Logger setting configuration.</param>
+            <param name="configuration">A configuration object with a Serilog section.</param>
+            <param name="dependencyContext">The dependency context from which sink/enricher packages can be located. If not supplied, the platform
+            default will be used.</param>
+            <returns>An object allowing configuration to continue.</returns>
+        </member>
+        <member name="M:Serilog.ConfigurationLoggerConfigurationExtensions.ConfigurationSection(Serilog.Configuration.LoggerSettingsConfiguration,Microsoft.Extensions.Configuration.IConfigurationSection,Microsoft.Extensions.DependencyModel.DependencyContext)">
+            <summary>
+            Reads logger settings from the provided configuration section.
+            </summary>
+            <param name="settingConfiguration">Logger setting configuration.</param>
+            <param name="configuration">The Serilog configuration section</param>
+            <param name="dependencyContext">The dependency context from which sink/enricher packages can be located. If not supplied, the platform
+            default will be used.</param>
+            <returns>An object allowing configuration to continue.</returns>
+        </member>
+    </members>
+</doc>

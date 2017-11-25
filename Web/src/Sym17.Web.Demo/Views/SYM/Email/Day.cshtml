@@ -1,0 +1,91 @@
+﻿@using Sitecore.Mvc
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<Sym17.Web.Demo.Models.IDaySlot>
+@{
+    Layout = null;
+}
+@if (Model != null)
+{
+    <table class="mcnTextBlock" style="min-width:100%;border-collapse:collapse" width="100%" cellspacing="0" cellpadding="0" border="0">
+        <tbody class="mcnTextBlockOuter">
+        <tr>
+            <td class="mcnTextBlockInner" style="padding-top:9px;" valign="top">
+                <!--[if mso]>
+                    <table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
+                    <tr>
+                <![endif]-->
+                <!--[if mso]>
+                    <td valign="top" width="600" style="width:600px;">
+                <![endif]-->
+                <table style="max-width:100%;min-width:100%;border-collapse:collapse" class="mcnTextContentContainer" width="100%" cellspacing="0" cellpadding="0" border="0" align="left">
+                    <tbody>
+                    <tr>
+
+                        <td class="mcnTextContent" style="padding-top:0;padding-right:18px;padding-bottom:9px;padding-left:18px;word-break:break-word;color:#202020;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left" valign="top">
+
+
+                            <table class="schedule" cellspacing="0" cellpadding="0" border="0" style="border-collapse:collapse;margin:0;padding:0;width:100%">
+                                <tbody>
+                                <tr>
+                                    <td class="schedule-day" width="100" style="background:#373f51;text-align:center;padding:8px"><span style="color:#ffffff;font-size:20px">@Model.DayOfWeek</span></td>
+                                    <td class="schedule-details" rowspan="2" style="background:#337ab7;text-align:right;padding:16px">
+                                        <a href="https://sym-demo.brimit.com/agenda" target="_blank" style="color:#ffffff!important;font-weight:normal;text-decoration:underline">Browse full agenda</a><br>
+                                        <br>
+                                        <br>
+                                        <span style="color:#ffffff!important"><img class="schedule-details--img" data-file-id="246525" src="https://gallery.mailchimp.com/b35d80c8c536cc62fcca5c7d3/images/ef921437-25a3-4fe9-8418-9030ebe6c8c4.png" width="21" height="21" style="border:0px;height:auto!important;outline:none;text-decoration:none;width:21px;margin:0px"> <span style="font-size:14px;color:#ffffff!important"><strong>Venue: The Mirage, Las Vegas</strong></span> </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="schedule-date" style="background:#718596;text-align:center;padding:16px"><span style="color:#ffffff;font-size:40px">@Model.DayNumber</span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!--[if mso]>
+                    </td>
+                <![endif]-->
+                <!--[if mso]>
+                    </tr>
+                    </table>
+                <![endif]-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table class="mcnTextBlock" style="min-width:100%;border-collapse:collapse" width="100%" cellspacing="0" cellpadding="0" border="0">
+        <tbody class="mcnTextBlockOuter">
+            <tr>
+                <td class="mcnTextBlockInner" style="padding-top:9px;" valign="top">
+                    <!--[if mso]>
+                        <table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
+                        <tr>
+                    <![endif]-->
+                    <!--[if mso]>
+                        <td valign="top" width="600" style="width:600px;">
+                    <![endif]-->
+                    <table style="max-width:100%;min-width:100%;border-collapse:collapse" class="mcnTextContentContainer" width="100%" cellspacing="0" cellpadding="0" border="0" align="left">
+                        <tbody>
+                            <tr>
+
+                                <td class="mcnTextContent" style="padding-top:0;padding-right:18px;padding-bottom:9px;padding-left:18px;word-break:break-word;color:#202020;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left" valign="top">
+                                    @Html.Sitecore().Placeholder("time")
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--[if mso]>
+                        </td>
+                    <![endif]-->
+                    <!--[if mso]>
+                        </tr>
+                        </table>
+                    <![endif]-->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+}
